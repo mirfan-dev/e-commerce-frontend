@@ -11,7 +11,7 @@ const ViewUserProfile = () => {
   const[searchQuery, setSearchQuery]= useState('');
 
    useEffect(() => {
-    getUser(0, USER_PAGE_SIZE, 'name', 'desc');
+    getUser(0, USER_PAGE_SIZE, 'createdAt', 'desc');
   }, []); 
 
   const getUser = (
@@ -111,27 +111,27 @@ const ViewUserProfile = () => {
                   <Pagination className="d-flex justify-content-end">
                    
                    <Pagination.First onClick={(event) => {
-                      getUser(0, USER_PAGE_SIZE, 'name', 'desc')}}
+                      getUser(0, USER_PAGE_SIZE, 'createdAt', 'desc')}}
                          disabled={user.first} />
                     
                     <Pagination.Prev onClick={(event) => {
-                      getUser(user.number - 1, USER_PAGE_SIZE, 'name', 'desc')}} 
+                      getUser(user.number - 1, USER_PAGE_SIZE, 'createdAt', 'desc')}} 
                         disabled={user.number === 0}
                       />
                     {
                           [...Array(user.totalPages)].map((obj,i)=> i).map((item) => (
                             user.pageNumber === item ? 
                               <Pagination.Item active key={item}>{item + 1}</Pagination.Item> : 
-                              <Pagination.Item onClick={(event) => {getUser(item,USER_PAGE_SIZE,'name','desc')}} key={item}>{item + 1}</Pagination.Item>
+                              <Pagination.Item onClick={(event) => {getUser(item,USER_PAGE_SIZE,'createdAt','desc')}} key={item}>{item + 1}</Pagination.Item>
                           ))
                         }
                         <Pagination.Next onClick={(event) => {
-                          getUser(user.number + 1, USER_PAGE_SIZE, 'name', 'desc')}} 
+                          getUser(user.number + 1, USER_PAGE_SIZE, 'createdAt', 'desc')}} 
                          disabled={user.number === user.totalPages - 1}
                       />
 
                     <Pagination.Last  onClick={(event) => {
-                      getUser(user.totalPages-1, USER_PAGE_SIZE, 'name', 'desc')}}
+                      getUser(user.totalPages-1, USER_PAGE_SIZE, 'createdAt', 'desc')}}
                       disabled={user.last}
                     />
                   </Pagination>
