@@ -86,3 +86,34 @@ export const searchUser = (keyword) => {
   return privateAxios.get(`/users/search/${keyword}`)
   .then((response)=> response.data);
 }
+// get current location
+export const getCurrentLocation = () => {
+
+  return new Promise((resolve, reject) => {
+
+    navigator.geolocation.getCurrentPosition(
+
+      (position) => {
+
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+
+        publicAxios.get(`/location/current?lat=${lat}&lon=${lon}`)
+          .then((response) => {
+            resolve(response.data);
+          })
+          .catch((error) => {
+            reject(error);
+          });
+
+      },
+
+      (error) => {
+        reject(error);
+      }
+
+    );
+
+  });
+
+}
