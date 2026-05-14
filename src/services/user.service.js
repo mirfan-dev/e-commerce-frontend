@@ -87,6 +87,7 @@ export const searchUser = (keyword) => {
   .then((response)=> response.data);
 }
 // get current location
+// get current location
 export const getCurrentLocation = () => {
 
   return new Promise((resolve, reject) => {
@@ -98,18 +99,35 @@ export const getCurrentLocation = () => {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
 
-        publicAxios.get(`/location/current?lat=${lat}&lon=${lon}`)
+        console.log(lat, lon);
+
+        publicAxios
+          .get(`/location/current?lat=${lat}&lon=${lon}`)
           .then((response) => {
+
             resolve(response.data);
+
           })
           .catch((error) => {
+
             reject(error);
+
           });
 
       },
 
       (error) => {
+
+        console.log(error);
+
         reject(error);
+
+      },
+
+      {
+        enableHighAccuracy: true,
+        timeout: 5000,
+        maximumAge: 0,
       }
 
     );
