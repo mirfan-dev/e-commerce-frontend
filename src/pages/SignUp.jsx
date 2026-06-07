@@ -6,12 +6,14 @@ import {
   Col,
   Container,
   Form,
+  InputGroup,
   Row,
   Spinner,
 } from "react-bootstrap";
 import { toast } from "react-toastify";
 import { registerUser } from "../services/user.service";
 import { NavLink, useNavigate } from "react-router-dom";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 const SignUp = () => {
   let [data, setData] = useState({
@@ -24,7 +26,8 @@ const SignUp = () => {
   });
 
   const [loading, setLoading] = useState(false);
-  let navigate= useNavigate();
+  let navigate = useNavigate();
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (event, property) => {
     setData({
@@ -163,27 +166,41 @@ const SignUp = () => {
                   {/* password */}
                   <Form.Group className="mb-3" controlId="formConfigPassword">
                     <Form.Label>enter Password</Form.Label>
-                    <Form.Control
-                      type="password"
-                      placeholder="Enter new Password"
-                      onChange={(event) =>
-                        handleChange(event, "password")
-                      }
-                      value={data.password}
-                    />
+                    <InputGroup>
+                      <Form.Control
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter new password"
+                        value={data.password}
+                        onChange={(event) => handleChange(event, "password")}
+                      />
+
+                      <Button
+                        variant="outline-secondary"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? <BsEyeSlash /> : <BsEye />}
+                      </Button>
+                    </InputGroup>
                   </Form.Group>
-                  
+
                   {/* confirm passwod */}
                   <Form.Group className="mb-3" controlId="formConfigPassword">
                     <Form.Label>Re-enter Password</Form.Label>
-                    <Form.Control
-                      type="password"
-                      placeholder="Re-enter Password"
-                      onChange={(event) =>
-                        handleChange(event, "confirmPassword")
-                      }
-                      value={data.confirmPassword}
-                    />
+                    <InputGroup>
+                      <Form.Control
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter new password"
+                        value={data.confirmedPassword}
+                        onChange={(event) => handleChange(event, "confirmedPassword")}
+                      />
+
+                      <Button
+                        variant="outline-secondary"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? <BsEyeSlash /> : <BsEye />}
+                      </Button>
+                    </InputGroup>
                   </Form.Group>
                   {/* textarea */}
                   <Form.Group className="mb-3">
@@ -242,9 +259,9 @@ const SignUp = () => {
   };
   return (
     <Base
-  title="E-Commerce Store | SignUp" 
-  description="Unlock a world of benefits! Sign up to track orders, save favorites, and experience seamless shopping"
->
+      title="E-Commerce Store | SignUp"
+      description="Unlock a world of benefits! Sign up to track orders, save favorites, and experience seamless shopping"
+    >
       {registerForm()}
     </Base>
   );

@@ -21,6 +21,7 @@ import AddCategory from './pages/admin/AddCategory';
 import ViewCategory from './pages/admin/ViewCategory';
 import AddProduct from './pages/admin/AddProduct';
 import ViewProduct from './pages/admin/ViewProduct';
+import ResetPassword from './pages/ResetPassword';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/contact" element={<Contact />}/>
           <Route path='/login' element={<Login />}/>
           <Route path='/signup' element={<SignUp/>}/>
+          <Route path='/resetPassword' element={<ResetPassword />} />
           <Route path="/users" element={<Dashboard />}>
             <Route path="home" element={<Home />} />
             <Route path="profile/:userId" element={<Profile />} />

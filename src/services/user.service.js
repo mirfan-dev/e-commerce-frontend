@@ -86,52 +86,19 @@ export const searchUser = (keyword) => {
   return privateAxios.get(`/users/search/${keyword}`)
   .then((response)=> response.data);
 }
-// get current location
-// get current location
-export const getCurrentLocation = () => {
 
-  return new Promise((resolve, reject) => {
+export const resetPassword = (email, otp, newPassword) => {
+  return privateAxios.post("/auth/reset-password", {
+    email: email,
+    otp: otp,
+    newPassword: newPassword,
+  })
+   .then((response)=> response.data);
+};
 
-    navigator.geolocation.getCurrentPosition(
-
-      (position) => {
-
-        const lat = position.coords.latitude;
-        const lon = position.coords.longitude;
-
-        console.log(lat, lon);
-
-        publicAxios
-          .get(`/location/current?lat=${lat}&lon=${lon}`)
-          .then((response) => {
-
-            resolve(response.data);
-
-          })
-          .catch((error) => {
-
-            reject(error);
-
-          });
-
-      },
-
-      (error) => {
-
-        console.log(error);
-
-        reject(error);
-
-      },
-
-      {
-        enableHighAccuracy: true,
-        timeout: 5000,
-        maximumAge: 0,
-      }
-
-    );
-
-  });
-
+// send reset otp
+export const sendResetOtp = (email) => {
+  return privateAxios.post(`/auth/send-reset-otp?email=${email}`)
+   .then((response)=> response.data);
 }
+

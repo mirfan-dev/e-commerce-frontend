@@ -14,7 +14,7 @@ const SideMenu = () => {
   const {logout} = useContext(UserContext);
   return (
     <>
-      <ListGroup variant="flush" className="sticky-top">
+      <ListGroup variant="flush" className="sticky-top border border-0 shadow">
          <ListGroup.Item as={NavLink} to={"/admins/home"} action>
          <GrHome size={20} />
          <span className='ms-2'>Home</span>

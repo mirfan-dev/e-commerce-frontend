@@ -1,5 +1,5 @@
-// export const BASE_URL=`http://localhost:9090`
-export const BASE_URL = `https://electronicstore-production-179c.up.railway.app`
+export const BASE_URL=`http://localhost:9090`
+// export const BASE_URL = `https://electronicstore-production-179c.up.railway.app`
 export const USER_PAGE_SIZE= 5;
 
 

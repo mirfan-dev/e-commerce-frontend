@@ -9,11 +9,13 @@ import {
   Button,
   Spinner,
   Alert,
+  InputGroup,
 } from "react-bootstrap";
 import { NavLink, redirect, useNavigate } from "react-router-dom";
 import { loginUser } from "../services/user.service";
 import { toast } from "react-toastify";
 import UserContext from "../context/user.context";
+import { BsEye, BsEyeSlash } from "react-icons/bs";
 
 const Login = () => {
 
@@ -32,6 +34,7 @@ const Login = () => {
   })
 
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (event, property) => {
     setData({
@@ -124,21 +127,29 @@ const Login = () => {
                   </Form.Group>
 
                   {/* passwod */}
-                  <Form.Group className="mb-3" controlId="formPassword">
-                    <Form.Label>Enter new Password</Form.Label>
-                    <Form.Control
-                      type="password"
-                      placeholder="Enter Password"
-                      onChange={(event) => handleChange(event, "password")}
-                      value={data.password}
-                    />
+                  <Form.Group className="mb-3" controlId="formConfigPassword">
+                    <Form.Label>enter Password</Form.Label>
+                    <InputGroup>
+                      <Form.Control
+                        type={showPassword ? "text" : "password"}
+                        placeholder="Enter new password"
+                        value={data.password}
+                        onChange={(event) => handleChange(event, "password")}
+                      />
+                      <Button
+                        variant="outline-secondary"
+                        onClick={() => setShowPassword(!showPassword)}
+                      >
+                        {showPassword ? <BsEyeSlash /> : <BsEye />}
+                      </Button>
+                    </InputGroup>
                   </Form.Group>
 
                   <Container className="text-center mt-3">
                     <p className="text-center">
                       Forgot Password?{" "}
                       <NavLink
-                         to="/forgetPassword"
+                         to="/resetPassword"
                         className="text-primary fw-bold text-decoration-none"
                       >
                         Click Here
