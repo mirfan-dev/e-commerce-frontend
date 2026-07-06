@@ -12,7 +12,7 @@ const AdminDashboard = () => {
   const dashboardView = () => {
     return(
         <div>
-           <Container className='p-5'>
+           <Container fluid className='px-7 p-5'>
              <Row>
                        {/* side menu  */}
                 <Col md={{

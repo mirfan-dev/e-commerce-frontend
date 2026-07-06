@@ -20,7 +20,7 @@ const SignUp = () => {
     name: "",
     email: "",
     password: "",
-    confirmPassword: "",
+    confirmedPassword: "",
     about: "",
     gender: "",
   });
@@ -41,7 +41,7 @@ const SignUp = () => {
       name: "",
       email: "",
       password: "",
-      confirmPassword: "",
+      confirmedPassword: "",
       about: "",
       gender: "",
     });
@@ -72,14 +72,14 @@ const SignUp = () => {
       return;
     }
     if (
-      data.confirmPassword == undefined ||
-      data.confirmPassword.trim() == ""
+      data.confirmedPassword == undefined ||
+      data.confirmedPassword.trim() == ""
     ) {
-      toast.error("ConfirmPassword is required");
+      toast.error("ConfirmedPassword is required");
       return;
     }
 
-    if (data.password != data.confirmPassword) {
+    if (data.password != data.confirmedPassword) {
       toast.error("Password and Confirmed password not match");
       return;
     }

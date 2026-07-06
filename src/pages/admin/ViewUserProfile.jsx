@@ -104,6 +104,7 @@ const ViewUserProfile = () => {
               </Button>
             </InputGroup>
           </Form.Group>
+          <div className="table-responsive hide-scrollbar">
           <Table striped bordered responsive className="text-center">
             <thead>
               <tr>
@@ -111,7 +112,7 @@ const ViewUserProfile = () => {
                 <th className="px-3 small">Name</th>
                 <th className="px-3 small">Email</th>
                 <th className="px-3 small">Gender</th>
-                <th className="px-3 small">About</th>
+                <th className="px-3 small" >About</th>
                 <th className="px-3 small">CreatedAt</th>
                 <th className="px-3 small">UpdatedAt</th>
                 <th className="px-3 small">Action</th>
@@ -128,6 +129,7 @@ const ViewUserProfile = () => {
               ))}
             </tbody>
           </Table>
+          </div>
           <Container>
             <Pagination className="d-flex justify-content-end">
               <Pagination.First
@@ -146,7 +148,7 @@ const ViewUserProfile = () => {
               {[...Array(user.totalPages)]
                 .map((obj, i) => i)
                 .map((item) =>
-                  user.pageNumber === item ? (
+                  user.number === item ? (
                     <Pagination.Item active key={item}>
                       {item + 1}
                     </Pagination.Item>

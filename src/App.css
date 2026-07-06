@@ -4,4 +4,29 @@
   border: none !important;
   }
 
- 
+.table-responsive {
+  scrollbar-width: none !important;
+  -ms-overflow-style: none !important;
+}
+
+.table-responsive::-webkit-scrollbar {
+  display: none !important;
+}
+
+
+.product-card {
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.product-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img:hover {
+  transform: scale(1.05);
+}
+
+
+

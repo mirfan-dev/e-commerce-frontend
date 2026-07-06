@@ -1,5 +1,5 @@
 
-import { Button } from "react-bootstrap";
+import { Button, Container } from "react-bootstrap";
 import { FaEye } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import Swal from "sweetalert2";
@@ -8,7 +8,8 @@ import { toast } from "react-toastify";
 import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import UserContext from "../../context/user.context";
-import { formatDate } from "../../services/helper.service";
+import { formatDate, getUserImageUrl } from "../../services/helper.service";
+import profilePic from "../../assets/dp.jpg";
 
 
 
@@ -51,7 +52,19 @@ const SingleUserView = ({index,user,updateUserList}) => {
   return (
     <tr>
       <td className="px-3 small"> {index + 1}</td>
+      <Container className="d-flex flex-column align-items-center justify-content-center">
+       <img
+              src={user?.imageName ? getUserImageUrl(user.userId) : profilePic}
+              alt=""
+              className="rounded-circle mb-2"
+              style={{
+                width: "100px",
+                height: "100px",
+                objectFit: "cover",
+              }}
+            />
       <td className="px-3 small">{user.name}</td>
+      </Container>
       <td className="px-3 small">{user.email}</td>
       <td className="px-3 small">{user.gender}</td>
       <td className="px-3 small">{user.about}</td>

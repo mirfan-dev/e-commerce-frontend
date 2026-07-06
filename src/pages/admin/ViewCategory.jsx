@@ -1,5 +1,5 @@
 import React, { use, useEffect, useState } from "react";
-import SingleCategoryView from "../../components/users/SingleCategoryView";
+import SingleCategoryView from "../../components/admin/SingleCategoryView";
 import {
   deleteCategory,
   getAllCategroy,
@@ -56,7 +56,7 @@ const ViewCategory = () => {
             pageNumber: data.pageNumber,
             pageSize: data.pageSize,
             totalElements: data.totalElements,
-            totalPages: data.totalPages
+            totalPages: data.totalPages,
           });
         })
         .catch((error) => {
@@ -158,6 +158,7 @@ const ViewCategory = () => {
     return (
       <>
         <Modal
+          centered
           show={show}
           onHide={handleClose}
           backdrop="static"
@@ -175,7 +176,9 @@ const ViewCategory = () => {
                 alt=""
               />
             </Container>
-            <div className="mt-3 text-justify">{selectedCategory.description}</div>
+            <div className="mt-3" style={{ textAlign: "justify" }}>
+              {selectedCategory.description}
+            </div>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
@@ -191,6 +194,7 @@ const ViewCategory = () => {
     return (
       <>
         <Modal
+          centered
           show={showUpdate}
           onHide={handleCloseUpdate}
           backdrop="static"
